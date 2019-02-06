@@ -10,7 +10,7 @@ services:
 before_script:
   - mysql -e 'CREATE DATABASE shinage_test;'
   - cp .env.travis .env
-  - composer install
+  - composer install --no-script
   - npm install
   - NODE_ENV=production ./node_modules/.bin/gulp
   - php bin/console assets:install --env=test
