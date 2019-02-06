@@ -30,6 +30,9 @@ script:
   - ./vendor/bin/phpspec run --no-code-generation
   - ./vendor/bin/behat --strict -n --tags="~@todo"
 
+after_failure:
+  - cat ./var/log/test.log
+
 before_deploy:
   - mkdir ./build
   - rm -f .scrutinizer.yml .travis.yml .gitignore .web-server-pid
