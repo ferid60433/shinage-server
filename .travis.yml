@@ -31,6 +31,8 @@ script:
   - ./vendor/bin/behat --strict -n --tags="~@todo"
 
 after_failure:
+  - echo "Printing some debug information:"
+  - php -i
   - cat ./var/log/test.log
 
 before_deploy:
