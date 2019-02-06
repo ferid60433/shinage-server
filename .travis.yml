@@ -24,6 +24,7 @@ before_script:
 
 script:
   - ./bin/console server:status -vvv
+  - curl http://localhost:8000/
   - ./vendor/bin/ecs check src/
   - ./node_modules/.bin/gulp eslint
   - ./bin/console lint:yaml config/
@@ -34,6 +35,7 @@ script:
   - ./bin/console lint:twig templates/
   - ./vendor/bin/phpspec run --no-code-generation
   - ./vendor/bin/behat --strict -n --tags="~@todo"
+  - curl http://localhost:8000/
 
 after_failure:
   - echo "Printing some debug information:"
