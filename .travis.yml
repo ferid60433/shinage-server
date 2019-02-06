@@ -27,6 +27,7 @@ script:
   - curl http://localhost:8000/
   - curl http://127.0.0.1:8000/
   - curl https://127.0.0.1:8000/
+  - ./bin/console server:status -vvv
   - ./vendor/bin/ecs check src/
   - ./node_modules/.bin/gulp eslint
   - ./bin/console lint:yaml config/
