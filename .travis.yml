@@ -12,6 +12,7 @@ services:
   - mysql
 
 before_script:
+  - phpenv config-rm xdebug.ini
   - mysql -e 'CREATE DATABASE shinage_test;'
   - cp .env.travis .env
   - composer install --no-scripts
