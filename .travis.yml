@@ -28,8 +28,8 @@ script:
   - ./bin/console lint:twig config/
   - ./bin/console lint:twig src/
   - ./bin/console lint:twig templates/
-  - ./vendor/bin/phpspec run --no-code-generation
-  - ./vendor/bin/behat --strict -n --tags="~@todo"
+  - ./vendor/bin/phpspec run --format=progress --no-code-generation
+  - ./vendor/bin/behat --format=progress --strict -n --tags="~@todo"
 
 after_failure:
   - echo "Printing some debug information:"
