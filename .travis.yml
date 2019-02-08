@@ -4,10 +4,6 @@ php:
   - '7.2'
   - '7.3'
 
-matrix:
-  allow_failures:
-    - php: 7.3
-
 services:
   - mysql
 
@@ -24,11 +20,6 @@ before_script:
   - php bin/console server:start 127.0.0.1:8000 --env=test
 
 script:
-  - ./bin/console server:status -vvv
-  - curl http://localhost:8000/
-  - curl http://127.0.0.1:8000/
-  - curl https://127.0.0.1:8000/
-  - ./bin/console server:status -vvv
   - ./vendor/bin/ecs check src/
   - ./node_modules/.bin/gulp eslint
   - ./bin/console lint:yaml config/
@@ -37,11 +28,8 @@ script:
   - ./bin/console lint:twig config/
   - ./bin/console lint:twig src/
   - ./bin/console lint:twig templates/
-  - ./vendor/bin/phpspec run --no-code-generation
-  - ./vendor/bin/behat --strict -n --tags="~@todo"
-  - curl http://localhost:8000/
-  - curl http://127.0.0.1:8000/
-  - curl https://127.0.0.1:8000/
+  - ./vendor/bin/phpspec run --format=progress --no-code-generation
+  - ./vendor/bin/behat --format=progress --strict -n --tags="~@todo"
 
 after_failure:
   - echo "Printing some debug information:"
